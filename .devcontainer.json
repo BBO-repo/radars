@@ -1,0 +1,18 @@
+{
+	"name": "radars",
+	"build": {
+		"dockerfile": "./dockerfile",
+		"context": ".",
+		"args": {}
+	},
+	"runArgs": [
+		"--name=radars",
+		"--net=host",
+		"-e", "DISPLAY=${env:DISPLAY}",
+		"-e", "QT_X11_NO_MITSHM=1",
+		"-v", "/tmp/.X11-unix:/tmp/.X11-unix",
+		"--privileged"
+	],
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+	"workspaceFolder": "/workspace"
+}
